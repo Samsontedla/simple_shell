@@ -13,10 +13,10 @@ int main(void)
         do{
                 printf("%s", "$ ");
                 if (stdin == NULL)
-                        break;
+                        return(0);
                 linelen = getline(&str , &line, stdin);
 
-                if (linelen == '\0')
+                if (linelen == EOF)
                         return(0);
                 int i;
                 char stri[50];
