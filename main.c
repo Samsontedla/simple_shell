@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include<sys/wait.h>
 #include <string.h>
+#include "head.h"
 
 int main(void)
 {
@@ -13,7 +14,7 @@ int main(void)
         extern char **environ;
         do{
                 printf("%s", "$ ");
-                linelen = getline(&str , &line, stdin);
+                linelen = _getline(&str , &line, stdin);
                 if (linelen == EOF)
                         return(0);
 		if (strcmp(str, "exit\n") == 0)
