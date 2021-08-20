@@ -17,7 +17,7 @@ int main(void)
                 if (linelen == EOF)
                         return(0);
 		if (strcmp(str, "exit\n") == 0)
-			break;
+			exit(0);
 
                 int i = 0;
                 char *sep = " \n";
@@ -53,10 +53,22 @@ int main(void)
 
                 if (pid == 0)
                 {
-                        //printf("%s%ld\n", argv[1], strlen(argv[1]));
-                        execve(progpath, argv, NULL);
-                        perror("Error");
-                }else {
+			int a = 0;
+			if (strcmp(argv[0],"env") == 0)
+			{
+				while(environ[a] != NULL)
+				{
+					printf("%s\n", environ[a]);
+					a++;
+				}
+				wait(NULL);
+			}
+			else
+			{
+				execve(progpath, argv, NULL);
+				perror("Error");
+			}
+		}else {
                         wait(NULL);
                 }
         }while(1);
