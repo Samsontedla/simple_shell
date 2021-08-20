@@ -13,15 +13,14 @@ int main(void)
         extern char **environ;
         do{
                 printf("%s", "$ ");
-                if (stdin == NULL)
-                        return(0);
                 linelen = getline(&str , &line, stdin);
-
                 if (linelen == EOF)
                         return(0);
+		if (strcmp(str, "exit\n") == 0)
+			break;
 
                 int i = 0;
-                const char sep[2] = " ";
+                char *sep = " \n";
 
                 char *argv[5];
 
@@ -29,24 +28,33 @@ int main(void)
                 cmd = malloc(sizeof(char)*80);
 
                 int j;
-                char *command;
-                command = malloc(sizeof(char) * 50);
-                for (cmd = strtok(str," \n"); cmd != NULL; cmd = strtok(NULL," \n"))
+                char *path = "/bin/";
+                char progpath[20];
+		for (cmd = strtok(str, sep); cmd != NULL; cmd = strtok(NULL, sep))
                 {
                         j = strlen(cmd);
                         cmd[j] = '\0';
                         argv[i] = cmd;
                         //printf("%s%ld\n", argv[i], strlen(argv[i]));
-                        ++i;
+                        i++;
                 }
                 argv[i] = NULL;
+		strcpy(progpath, path);
+		strcat(progpath, argv[0]);
 
+		for(i = 0; i < strlen(progpath); i++)
+		{
+			if(progpath[i] == '\n')
+			{
+				progpath[i] = '\0';
+			}
+		}
                 int pid = fork();
 
                 if (pid == 0)
                 {
                         //printf("%s%ld\n", argv[1], strlen(argv[1]));
-                        execve(argv[0], argv, NULL);
+                        execve(progpath, argv, NULL);
                         perror("Error");
                 }else {
                         wait(NULL);
