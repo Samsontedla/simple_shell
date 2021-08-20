@@ -3,9 +3,14 @@
 #include <unistd.h>
 #include <string.h>
 #include "head.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
-int _getline(char **buffer, size_t *n, FILE *stream)
+ssize_t _getline(char **buffer, size_t *n, FILE *stream)
 {
-  read(0,*buffer,*n);
-  return(strlen(*buffer));
+	buffer = malloc(sizeof(char) * (*n));
+	
+	read(fileno(stream), *buffer, *n);
+	return(strlen(*buffer));
 }

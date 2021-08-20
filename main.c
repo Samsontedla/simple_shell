@@ -4,7 +4,6 @@
 #include<sys/wait.h>
 #include <string.h>
 #include "head.h"
-
 int main(void)
 {
         size_t line = 50;
@@ -12,13 +11,15 @@ int main(void)
         str = malloc(line * sizeof(char));
         ssize_t linelen;
         extern char **environ;
-        do{
-                printf("%s", "$ ");
-                linelen = _getline(&str , &line, stdin);
-                if (linelen == EOF)
-                        return(0);
+	do{
+		prompt();
+		linelen = getline(&str , &line, stdin);
+		if (linelen == EOF)/* used for infinite loop on echo piped input*/
+                        exit(1);
 		if (strcmp(str, "exit\n") == 0)
-			exit(0);
+			exit(2);
+
+//		printf("%s : %ld", str, strlen(str));
 
                 int i = 0;
                 char *sep = " \n";
@@ -31,7 +32,7 @@ int main(void)
                 int j;
                 char *path = "/bin/";
                 char progpath[20];
-		for (cmd = strtok(str, sep); cmd != NULL; cmd = strtok(NULL, sep))
+		for (cmd = strtok(str, " "); cmd != NULL; cmd = strtok(NULL, sep))
                 {
                         j = strlen(cmd);
                         cmd[j] = '\0';
@@ -40,8 +41,16 @@ int main(void)
                         i++;
                 }
                 argv[i] = NULL;
-		strcpy(progpath, path);
-		strcat(progpath, argv[0]);
+
+		if (strncmp(path, argv[0], 5) != 0)
+		{
+			strcpy(progpath, path);
+			strcat(progpath, argv[0]);
+		}
+		else if (strncmp(argv[0], path, 5) == 0)
+		{
+			strcpy(progpath, argv[0]);
+		}
 
 		for(i = 0; i < strlen(progpath); i++)
 		{
@@ -55,6 +64,10 @@ int main(void)
                 if (pid == 0)
                 {
 			int a = 0;
+			if (argv[0] == NULL || argv[0] == 1)
+			{
+				exit(3);
+			}
 			if (strcmp(argv[0],"env") == 0)
 			{
 				while(environ[a] != NULL)
@@ -62,7 +75,7 @@ int main(void)
 					printf("%s\n", environ[a]);
 					a++;
 				}
-				exit(0);
+				exit(4);
 			}
 			else
 			{
