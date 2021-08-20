@@ -61,7 +61,7 @@ int main(void)
 					printf("%s\n", environ[a]);
 					a++;
 				}
-				wait(NULL);
+				exit(0);
 			}
 			else
 			{
