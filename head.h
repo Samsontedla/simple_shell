@@ -43,4 +43,10 @@ char *_strdup(char *str);
 ssize_t _getline(char **buffer, size_t *n, FILE *stream);
 void prompt(void);
 
+/****** COMMAND LINE ARGUMENTS ******/
+
+void read_file(char *file, char **argv);
+void treat_file(char *line, int count, FILE *fp, char **argv);
+void exit_bul_for_file(char **cmd, char *line, FILE *fd);
+
 #endif /*HEAD_H*/

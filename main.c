@@ -1,10 +1,17 @@
 #include "head.h"
 
+/**
+ * main - Entry point to program
+ * @argc: Argument count
+ * @argv: Argument vector
+ * Return: Returns condition
+ */
+
 int main(__attribute__((unused)) int argc, char **argv)
 {
-      	char *input;
+	char *input;
 	char *cmd;
-       	int count = 0;
+	int count = 0;
 	int condition = 1;
 	int stat = 0;
 
@@ -12,7 +19,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		read_file(argv[1], argv);
 	signal(SIGINT, signal_to_handle);
 
-	while(condition) 
+	while (condition)
 	{
 		count++;
 		if (isatty(STDIN_FILENO))
@@ -35,7 +42,6 @@ int main(__attribute__((unused)) int argc, char **argv)
 		else
 		{
 			stat = check_cmd(cmd, input, counter, argv);
-
 		}
 		free_all(cmd, input);
 	}
