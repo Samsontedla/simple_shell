@@ -64,7 +64,7 @@ int main(void)
                 if (pid == 0)
                 {
 			int a = 0;
-			if (argv[0] == NULL || argv[0] == 1)
+			if (argv[0] == NULL || strlen(argv[0]) == 1)
 			{
 				exit(3);
 			}
