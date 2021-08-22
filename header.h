@@ -91,6 +91,7 @@ void  exit_bul(char **cmd, char *input, char **argv, int c);
 
 void print_number(unsigned int n);
 void print_number_int(int n);
+int print_echo(char **cmd);
 
 /******* PATH FINDER *******/
 

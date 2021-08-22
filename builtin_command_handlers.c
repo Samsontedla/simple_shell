@@ -48,16 +48,17 @@ int handle_builtin(char **cmd, int st)
 	};
 	int i = 0;
 
-        while ((built_in + i)->command)
-        {
-                if (_strcmp(cmd[0], (built_in + i)->command) == 0)
-                {
-                        return ((built_in + i)->function(cmd, st));
-                }
-                i++;
-        }
-        return (-1);
+	while ((built_in + i)->command)
+	{
+		if (_strcmp(cmd[0], (built_in + i)->command) == 0)
+		{
+			return ((built_in + i)->function(cmd, st));
+		}
+		i++;
+	}
+	return (-1);
 }
+
 /**
  * exit_bul - Exit Status for built-in commands
  * @cmd: Array of parsed command strings
