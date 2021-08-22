@@ -1,8 +1,8 @@
 #include "header.h"
 
 /**
- * create_envi - Creats an array of Enviroment Variables
- * @envi: Array of Enviroment Variable
+ * create_envi - Creates an array of Enviroment Variables
+ * @envi: Array to store Enviroment Variables
  */
 
 void create_envi(char **envi)
@@ -15,8 +15,8 @@ void create_envi(char **envi)
 }
 
 /**
- * free_env - Frees the created Enviroment Variable array
- * @env:  Environment variables
+ * free_env - Frees the memory of the created Enviroment Variables array
+ * @env:  Array of Environment variables
  */
 
 void free_env(char **env)

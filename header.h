@@ -81,6 +81,17 @@ extern char **environ;
 void create_envi(char **envi);
 void free_env(char **env);
 
+/****** BUILTIN COMMAND HANDLERS ******/
+
+int check_builtin(char **cmd);
+int handle_builtin(char **cmd, int st);
+void  exit_bul(char **cmd, char *input, char **argv, int c);
+
+/****** PRINTING FUNCTIONS *****/
+
+void print_number(unsigned int n);
+void print_number_int(int n);
+
 /****** BUILT-IN COMMANDS STRUCT *****/
 
 /**
