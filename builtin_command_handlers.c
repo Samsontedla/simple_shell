@@ -20,7 +20,6 @@ int check_builtin(char **cmd)
 	{
 		return (-1);
 	}
-
 	while ((fun + i)->command)
 	{
 		if (_strcmp(cmd[0], (fun + i)->command) == 0)
@@ -39,25 +38,25 @@ int check_builtin(char **cmd)
 
 int handle_builtin(char **cmd, int er)
 {
-         builtin built_in[] = {
-                {"cd", change_dir},
-                {"env", dis_env},
-                {"help", display_help},
-                {"echo", echo_bul},
-                {"history", history_dis},
-                {NULL, NULL}
-        };
-        int i = 0;
+	builtin built_in[] = {
+		{"cd", change_dir},
+		{"env", dis_env},
+		{"help", display_help},
+		{"echo", echo_bul},
+		{"history", history_dis},
+		{NULL, NULL}
+	};
+	int i = 0;
 
-        while ((built_in + i)->command)
-        {
-                if (_strcmp(cmd[0], (built_in + i)->command) == 0)
-                {
-                        return ((built_in + i)->function(cmd, er));
-                }
-                i++;
-        }
-        return (-1);
+	while ((built_in + i)->command)
+	{
+		if (_strcmp(cmd[0], (built_in + i)->command) == 0)
+		{
+			return ((built_in + i)->function(cmd, er));
+		}
+		i++;
+	}
+	return (-1);
 }
 
 /**
