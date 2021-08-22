@@ -81,12 +81,6 @@ extern char **environ;
 void create_envi(char **envi);
 void free_env(char **env);
 
-/****** BUILTIN COMMAND HANDLERS ******/
-
-int check_builtin(char **cmd);
-int handle_builtin(char **cmd, int st);
-void  exit_bul(char **cmd, char *input, char **argv, int c);
-
 /****** PRINTING FUNCTIONS *****/
 
 void print_number(unsigned int n);
@@ -99,14 +93,27 @@ int path_cmd(char **cmd);
 char *build(char *token, char *value);
 char *_getenv(char *name);
 
+/****** BUILTIN COMMAND HANDLERS AND EXECUTE ******/
+
+int check_builtin(char **cmd);
+int handle_builtin(char **cmd, int st);
+void exit_bul(char **cmd, char *input, char **argv, int c);
+int change_dir(char **cmd, __attribute__((unused))int st);
+int dis_env(__attribute__((unused)) char **cmd,
+		__attribute__((unused)) int st);
+int display_help(char **cmd, __attribute__((unused))int st);
+int echo_bul(char **cmd, int st);
+int history_dis(__attribute__((unused))char **c,
+		__attribute__((unused))int st);
+
 /****** BUILT-IN COMMANDS STRUCT *****/
 
 /**
  * struct _builtin - Defines a struct that conatins built-in commands
- * 		with their respective implementation functions
+ * with their respective implementation functions
  * @command: - Built-in command
- * @function: - Pointer to custom functions that have 
- * 		similar functionalities as the built-in commands
+ * @function: - Pointer to custom functions that have
+ * similar functionalities as the built-in commands
  */
 
 typedef struct _builtin
