@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "head.h"
 
 /**
  * handle_builtin - Handles predefined built in commands
@@ -73,14 +73,16 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 	wait(&status);
 	return (0);
 }
+
 /**
  * signal_to_handel - Configures ^C not to terminate our shell
  * @sig: Incoming Signal
  */
-void signal_to_handel(int sig)
+
+void signal_to_handle(int sig)
 {
 	if (sig == SIGINT)
 	{
-		PRINTER("\n$ ");
+		PRINT("\n$ ");
 	}
 }

@@ -51,9 +51,10 @@ void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 
 /****** PARSED ARGUMENT HANDLER FUNCTIONS *****/
 
+char **parse_cmd(char *input);
 int handle_builtin(char **cmd, int er);
 int check_cmd(char **cmd, char *input, int c, char **argv);
-oid signal_to_handel(int sig);
+void signal_to_handle(int sig);
 
 /****** BUILT-IN COMMANDS STRUCT *****/
 
@@ -68,6 +69,6 @@ typedef struct _builtin
 {
 	char *command;
 	int (*function)(char **line, int er);
-} built_in;
+} builtin;
 
 #endif /*HEAD_H*/
