@@ -58,11 +58,7 @@ void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 char **parse_cmd(char *input);
 int handle_builtin(char **cmd, int er);
 int check_cmd(char **cmd, char *input, int c, char **argv);
-<<<<<<< HEAD:header.h
-void signal_to_handel(int sig);
-=======
 void signal_to_handle(int sig);
->>>>>>> 9b6b10e6ce593b59401755ba89563f025cf78629:head.h
 
 /****** BUILT-IN COMMANDS STRUCT *****/
 
