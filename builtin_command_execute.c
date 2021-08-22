@@ -93,7 +93,7 @@ int echo_bul(char **cmd, int st)
 
 	if (_strncmp(cmd[1], "$?", 2) == 0)
 	{
-		print_number_in(st);
+		print_number_int(st);
 		PRINT("\n");
 	}
 	else if (_strncmp(cmd[1], "$$", 2) == 0)

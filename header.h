@@ -92,6 +92,12 @@ void  exit_bul(char **cmd, char *input, char **argv, int c);
 void print_number(unsigned int n);
 void print_number_int(int n);
 
+/******* PATH FINDER *******/
+
+int path_cmd(char **cmd);
+char *build(char *token, char *value);
+char *_getenv(char *name);
+
 /****** BUILT-IN COMMANDS STRUCT *****/
 
 /**
