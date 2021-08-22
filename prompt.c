@@ -1,7 +1,9 @@
-#include <stdio.h>
 #include "head.h"
+/**
+ * prompt - function that prints '$' to standard output
+ */
 void prompt(void)
 {
-        printf("%s", "$ ");
+        PRINT("$ ");
 }
 
