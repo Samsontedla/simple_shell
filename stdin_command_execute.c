@@ -47,7 +47,7 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 }
 
 /**
- * signal_to_handel - Configures ^C not to terminate our shell
+ * signal_to_handle - Configures ^C not to terminate our shell
  * @sig: Incoming Signal
  */
 

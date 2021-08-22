@@ -39,7 +39,16 @@ char *_strchr(char *s, char c);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strdup(char *str);
 
-/********** MISCELLANEOUS FUNCTIONS ************/
+/*********** MEMORY HANDLERS ***********/
+
+void free_env(char **env);
+void *fill_an_array(void *a, int el, unsigned int len);
+char *_memcpy(char *dest, char *src, unsigned int n);
+void *_calloc(unsigned int size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void free_all(char **input, char *line);
+
+/****** MISCELLANEOUS AND INPUT FUNCTIONS *******/
 
 char *_getline();
 void hashtag_handler(char *buff);
@@ -84,7 +93,7 @@ void free_env(char **env);
 typedef struct _builtin
 {
 	char *command;
-	int (*function)(char **line, int er);
+	int (*function)(char **line, int st);
 } builtin;
 
 #endif /*HEADER_H*/
