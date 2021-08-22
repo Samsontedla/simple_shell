@@ -1,7 +1,5 @@
 # Simple Shell Project In C
 
-<img src="https://d33wubrfki0l68.cloudfront.net/d26c33490a0d8eaee4b44254905b8e3cd3ff2a00/734f2/img/symbol/svg/monochrome_light.svg" alt="drawing" width="200"/>
-
  ## This is a ReadMe file for a custom simple UNIX command line interpreter written in C programming language.
 
 ---
@@ -21,7 +19,6 @@ This repository contains the source codes for a Simple UNIX command line interpr
 #### Technologies
 
 - C
-- Linux
 
 [Back To The Top](#simple-shell-project-in-c)
 
@@ -30,7 +27,8 @@ This repository contains the source codes for a Simple UNIX command line interpr
 ## **How To Use**
 
 
-### *In order to initialize the program, please run the code belowBack To The Top](#simple-shell-project-in-c) on a Unix Shell environment.*
+### *In order to initialize the program, please run the code below
+[Back To The Top](#simple-shell-project-in-c) on a Unix Shell environment.*
 ```html
     ./hsh
 ```
