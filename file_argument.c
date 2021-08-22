@@ -43,7 +43,7 @@ void treat_file(char *line, int count, FILE *fp, char **argv)
 
 	cmd = parse_cmd(line);
 	if (_strncmp(cmd[0], "exit", 4) == 0)
-		exit_bul_for_file(cmd, line fp);
+		exit_bul_for_file(cmd, line, fp);
 	else if (check_builtin(cmd) == 0)
 		stat = handle_builtin(cmd, stat);
 	else
