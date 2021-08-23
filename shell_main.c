@@ -10,7 +10,7 @@
 int main(__attribute__((unused)) int argc, char **argv)
 {
 	char *input;
-	char *cmd;
+	char **cmd;
 	int count = 0;
 	int condition = 1;
 	int stat = 0;
@@ -31,7 +31,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		cmd = parse_cmd(input);
 		if (_strcmp(cmd[0], "exit") == 0)
 		{
-			exit_bul(cmd, input, argv, counter);
+			exit_bul(cmd, input, argv, count);
 		}
 		else if (check_builtin(cmd) == 0)
 		{
@@ -41,7 +41,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		}
 		else
 		{
-			stat = check_cmd(cmd, input, counter, argv);
+			stat = check_cmd(cmd, input, count, argv);
 		}
 		free_all(cmd, input);
 	}
