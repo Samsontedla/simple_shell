@@ -1,35 +1,6 @@
 #include "header.h"
 
 /**
- * handle_builtin - Handles predefined built in commands
- * @cmd: Array of parsed command strings
- * @er: Status of last execution
- * Return: -1 Failure 0 Success
- */
-
-int handle_builtin(char **cmd, int er)
-{
-	 builtin built_in[] = {
-		{"cd", change_dir},
-		{"env", dis_env},
-		{"help", display_help},
-		{"echo", echo_bul},
-		{"history", history_dis},
-		{NULL, NULL}
-	};
-	int i = 0;
-
-	while ((built_in + i)->command)
-	{
-		if (_strcmp(cmd[0], (built_in + i)->command) == 0)
-		{
-			return ((built_in + i)->function(cmd, er));
-		}
-		i++;
-	}
-	return (-1);
-}
-/**
  * check_cmd - Excutes commands found in predefined path
  * @cmd: Array of parsed command strings
  * @input: Input recieved from user (to be freed)
@@ -37,6 +8,7 @@ int handle_builtin(char **cmd, int er)
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
  * Return: 1 Case Command Null -1 Wrong Command 0 Command Excuted
  */
+
 int check_cmd(char **cmd, char *input, int c, char **argv)
 {
 	int status;
