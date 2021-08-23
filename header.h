@@ -1,5 +1,5 @@
-#ifndef HEAD_H
-#define HEAD_H
+#ifndef HEADER_H
+#define HEADER_H
 
 /***** MACROS *****/
 
@@ -39,9 +39,13 @@ char *_strchr(char *s, char c);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strdup(char *str);
 
+/********** MISCELLANEOUS FUNCTIONS ************/
 
-ssize_t _getline(char **buffer, size_t *n, FILE *stream);
+char *_getline();
+void hashtag_handler(char *buff);
 void prompt(void);
+unsigned int check_delim(char c, const char *str);
+char *_strtok(char *str, const char *delim);
 
 /****** FILE ARGUMENT HANDLER FUNCTIONS ******/
 
@@ -53,15 +57,16 @@ void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 
 int handle_builtin(char **cmd, int er);
 int check_cmd(char **cmd, char *input, int c, char **argv);
-oid signal_to_handel(int sig);
+void signal_to_handel(int sig);
 
 /****** BUILT-IN COMMANDS STRUCT *****/
 
 /**
  * struct _builtin - Defines a struct that conatins built-in commands
- * with their respective implementation functions
+ * 		with their respective implementation functions
  * @command: - Built-in command
- * @function: - Custom function that has similar functionality as built-in
+ * @function: - Pointer to custom functions that have 
+ * 		similar functionalities as the built-in commands
  */
 
 typedef struct _builtin
@@ -70,4 +75,4 @@ typedef struct _builtin
 	int (*function)(char **line, int er);
 } built_in;
 
-#endif /*HEAD_H*/
+#endif /*HEADER_H*/

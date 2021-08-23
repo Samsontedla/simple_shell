@@ -1,4 +1,4 @@
-#include "head.h"
+#include "header.h"
 
 /**
  * parse_cmd - Parses the command recieved from stdin

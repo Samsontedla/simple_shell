@@ -1,4 +1,4 @@
-#include "head.h"
+#include "header.h"
 /**
  * _strcmp - function that compares two string
  * @s1: first string

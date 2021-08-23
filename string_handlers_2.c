@@ -1,4 +1,4 @@
-#include "head.h"
+#include "header.h"
 /**
  * _strcpy - function that copies a string
  * @dest: destination

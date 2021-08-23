@@ -1,4 +1,4 @@
-#include "head.h"
+#include "header.h"
 
 /**
  * read_file - Reads commands from the argument File
