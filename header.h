@@ -70,6 +70,17 @@ int handle_builtin(char **cmd, int er);
 int check_cmd(char **cmd, char *input, int c, char **argv);
 void signal_to_handle(int sig);
 
+/******* ERROR HANDLERS ******/
+
+void print_error(char *input, int counter, char **argv);
+void _prerror(char **argv, int c, char **cmd);
+
+/****** ENVIRONMENT HANDLERS ******/
+
+extern char **environ;
+void create_envi(char **envi);
+void free_env(char **env);
+
 /****** BUILT-IN COMMANDS STRUCT *****/
 
 /**
