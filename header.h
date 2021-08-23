@@ -39,7 +39,16 @@ char *_strchr(char *s, char c);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strdup(char *str);
 
-/********** MISCELLANEOUS FUNCTIONS ************/
+/*********** MEMORY HANDLERS ***********/
+
+void free_env(char **env);
+void *fill_an_array(void *a, int el, unsigned int len);
+char *_memcpy(char *dest, char *src, unsigned int n);
+void *_calloc(unsigned int size);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
+void free_all(char **input, char *line);
+
+/****** MISCELLANEOUS AND INPUT FUNCTIONS *******/
 
 char *_getline();
 void hashtag_handler(char *buff);
@@ -58,11 +67,7 @@ void exit_bul_for_file(char **cmd, char *line, FILE *fd);
 char **parse_cmd(char *input);
 int handle_builtin(char **cmd, int er);
 int check_cmd(char **cmd, char *input, int c, char **argv);
-<<<<<<< HEAD:header.h
-void signal_to_handel(int sig);
-=======
 void signal_to_handle(int sig);
->>>>>>> 9b6b10e6ce593b59401755ba89563f025cf78629:head.h
 
 /****** BUILT-IN COMMANDS STRUCT *****/
 
@@ -77,7 +82,7 @@ void signal_to_handle(int sig);
 typedef struct _builtin
 {
 	char *command;
-	int (*function)(char **line, int er);
+	int (*function)(char **line, int st);
 } builtin;
 
 #endif /*HEADER_H*/

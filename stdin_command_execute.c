@@ -1,8 +1,4 @@
-<<<<<<< HEAD:stdin_command_excute.c
 #include "header.h"
-=======
-#include "head.h"
->>>>>>> 9b6b10e6ce593b59401755ba89563f025cf78629:stdin_command_execute.c
 
 /**
  * handle_builtin - Handles predefined built in commands
@@ -79,7 +75,7 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 }
 
 /**
- * signal_to_handel - Configures ^C not to terminate our shell
+ * signal_to_handle - Configures ^C not to terminate our shell
  * @sig: Incoming Signal
  */
 
