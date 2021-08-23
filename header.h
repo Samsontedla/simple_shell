@@ -81,6 +81,12 @@ extern char **environ;
 void create_envi(char **envi);
 void free_env(char **env);
 
+/******* PATH FINDER *******/
+
+int path_cmd(char **cmd);
+char *build(char *token, char *value);
+char *_getenv(char *name);
+
 /****** BUILT-IN COMMANDS STRUCT *****/
 
 /**
