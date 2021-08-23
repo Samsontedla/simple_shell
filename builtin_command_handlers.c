@@ -8,7 +8,7 @@
 
 int check_builtin(char **cmd)
 {
-	bul_t fun[] = {
+	builtin fun[] = {
 		{"cd", NULL},
 		{"help", NULL},
 		{"echo", NULL},
@@ -33,11 +33,11 @@ int check_builtin(char **cmd)
 /**
  * handle_builtin - Handles predefined built in commands
  * @cmd: Array of parsed command strings
- * @er: Status of last execution
+ * @st: Status of last execution
  * Return: -1 Failure 0 Success
  */
 
-int handle_builtin(char **cmd, int er)
+int handle_builtin(char **cmd, int st)
 {
          builtin built_in[] = {
                 {"cd", change_dir},
@@ -53,7 +53,7 @@ int handle_builtin(char **cmd, int er)
         {
                 if (_strcmp(cmd[0], (built_in + i)->command) == 0)
                 {
-                        return ((built_in + i)->function(cmd, er));
+                        return ((built_in + i)->function(cmd, st));
                 }
                 i++;
         }
