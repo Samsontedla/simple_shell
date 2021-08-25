@@ -69,7 +69,7 @@ int handle_builtin(char **cmd, int st)
 
 void exit_bul(char **cmd, char *input, char **argv, int c)
 {
-	int statue, i = 0;
+	int status, i = 0;
 
 	if (cmd[1] == NULL)
 	{
@@ -86,10 +86,10 @@ void exit_bul(char **cmd, char *input, char **argv, int c)
 		}
 		else
 		{
-			statue = _atoi(cmd[1]);
+			status = _atoi(cmd[1]);
 			free(input);
 			free(cmd);
-			exit(statue);
+			exit(status);
 		}
 	}
 }
