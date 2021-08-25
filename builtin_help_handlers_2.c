@@ -61,8 +61,5 @@ int display_help(char **cmd, __attribute__((unused))int st)
 		help_unsetenv();
 	else if (_strcmp(cmd[1], "help") == 0)
 		help_help();
-/*	else
-		write(STDERR_FILENO, name, _strlen(name));
-*/
 	return (0);
 }
