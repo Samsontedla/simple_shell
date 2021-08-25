@@ -93,6 +93,19 @@ int path_cmd(char **cmd);
 char *build(char *token, char *value);
 char *_getenv(char *name);
 
+/******* HELP HANDLERS *******/
+
+void help_env(void);
+void help_setenv(void);
+void help_unsetenv(void);
+void help_history(void);
+void help_all(void);
+void help_alias(void);
+void help_cd(void);
+void help_exit(void);
+void help_help(void);
+int display_help(char **cmd, __attribute__((unused))int st);
+
 /****** BUILTIN COMMAND HANDLERS AND EXECUTE ******/
 
 int check_builtin(char **cmd);
@@ -101,7 +114,6 @@ void exit_bul(char **cmd, char *input, char **argv, int c);
 int change_dir(char **cmd, __attribute__((unused))int st);
 int dis_env(__attribute__((unused)) char **cmd,
 		__attribute__((unused)) int st);
-int display_help(char **cmd, __attribute__((unused))int st);
 int echo_bul(char **cmd, int st);
 int history_dis(__attribute__((unused))char **c,
 		__attribute__((unused))int st);

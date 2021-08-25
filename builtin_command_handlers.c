@@ -67,7 +67,7 @@ int handle_builtin(char **cmd, int st)
  * @c: Shell execution count
  */
 
-void  exit_bul(char **cmd, char *input, char **argv, int c)
+void exit_bul(char **cmd, char *input, char **argv, int c)
 {
 	int statue, i = 0;
 
