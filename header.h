@@ -51,6 +51,8 @@ void free_all(char **input, char *line);
 /****** MISCELLANEOUS AND INPUT FUNCTIONS *******/
 
 char *_getline();
+char *space(char *str);
+char *enter(char *string);
 void hashtag_handler(char *buff);
 void prompt(void);
 unsigned int check_delim(char c, const char *str);

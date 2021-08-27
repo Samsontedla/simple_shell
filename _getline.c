@@ -5,13 +5,16 @@
 */
 char *_getline()
 {
-	int i, rd;
-	int buffsize = BUFSIZE;
-	char c = 0;
-	char *buffer;
+	int i, rd, buffsize = BUFSIZE;
+	char c = 0, *buffer, *buf;
 
+	buf = malloc(buffsize);
+	if (buf == NULL)
+	{
+		free(buf);
+		return (NULL);
+	}
 	buffer = malloc(buffsize);
-
 	if (buffer == NULL)
 	{
 		free(buffer);
@@ -28,22 +31,57 @@ char *_getline()
 		}
 		buffer[i] = c;
 		if (buffer[0] == '\n')
-		{
-			free(buffer);
-			return ("\0");
-		}
+			return (enter(buffer));
 		if (i >= buffsize)
 		{
 			buffer = _realloc(buffer, buffsize, buffsize + 1);
 			if (buffer == NULL)
-			{
 				return (NULL);
-			}
 		}
 	}
 	buffer[i] = '\0';
-	hashtag_handler(buffer);
-	return (buffer);
+	buf = space(buffer);
+	if (buf[0] == '\0')
+		return ("\0");
+	hashtag_handler(buf);
+	return (buf);
+}
+/**
+ * enter - Handles newline character input
+ * @string: String to be handled
+ * Return: Empty string
+ */
+char *enter(char *string)
+{
+	free(string);
+	return ("\0");
+}
+
+/**
+ * space - Modifies the input string to remove preceeding whitespaces
+ * @str: Input to be modifies
+ * Return: Returns the modified string
+ */
+char *space(char *str)
+{
+	int i, j = 0;
+	char *buff;
+
+	buff = malloc(sizeof(char) * BUFSIZE);
+	if (buff == NULL)
+	{
+		free(buff);
+		return (NULL);
+	}
+	for (i = 0; str[i] == ' '; i++)
+		;
+	for (; str[i + 1] != '\0'; i++)
+	{
+		buff[j] = str[i];
+		j++;
+	}
+	buff[j] = '\0';
+	return (buff);
 }
 /**
  * hashtag_handler - function that removes everything after '#'

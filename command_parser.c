@@ -13,6 +13,8 @@ char **parse_cmd(char *input)
 	int i;
 	int buffsize = BUFSIZE;
 
+	if(input[0] == ' ' && input[_strlen(input)] == ' ')
+		exit(0);
 	if (input == NULL)
 		return (NULL);
 	arguments = malloc(sizeof(char *) * buffsize);
