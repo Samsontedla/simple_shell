@@ -76,6 +76,7 @@ void signal_to_handle(int sig);
 
 void print_error(char *input, int counter, char **argv);
 void _prerror(char **argv, int c, char **cmd);
+void error_file(char **argv, int c);
 
 /****** ENVIRONMENT HANDLERS ******/
 
