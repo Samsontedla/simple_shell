@@ -82,11 +82,20 @@ void exit_bul(char **cmd, char *input, char **argv, int c)
 		if (_isalpha(cmd[1][i++]) != 0)
 		{
 			_prerror(argv, c, cmd);
-			break;
+			free(input);
+			free(cmd);
+			exit(2);
 		}
 		else
 		{
 			status = _atoi(cmd[1]);
+			if (status == 2)
+			{
+				_prerror(argv, c, cmd);
+				free(input);
+				free(cmd);
+				exit(status);
+			}
 			free(input);
 			free(cmd);
 			exit(status);
