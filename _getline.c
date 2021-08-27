@@ -30,17 +30,15 @@ char *_getline()
 		{
 			buffer = _realloc(buffer, buffsize, buffsize + 1);
 			if (buffer == NULL)
-				return (free(buffer), NULL);
+			{
+				free(buffer);
+				return (NULL);
+			}
 		}
 	}
 	buffer[i] = '\0';
 	buf = space(buffer);
 	free(buffer);
-	if (buf[0] == '\0')
-	{
-		free(buf);
-		return ("\0");
-	}
 	hashtag_handler(buf);
 	return (buf);
 }
@@ -79,6 +77,11 @@ char *space(char *str)
 		j++;
 	}
 	buff[j] = '\0';
+	if (buff[0] == '\0')
+	{
+		free(buff);
+		return ("\0");
+	}
 	return (buff);
 }
 /**
