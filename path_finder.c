@@ -25,6 +25,7 @@ int path_cmd(char **cmd)
 		value = _strtok(NULL, ":");
 	}
 	free(path);
+	free(value);
 	return (1);
 }
 /**
@@ -42,6 +43,7 @@ char *build(char *token, char *value)
 	cmd = malloc(sizeof(char) * len);
 	if (cmd == NULL)
 	{
+		free(cmd);
 		return (NULL);
 	}
 

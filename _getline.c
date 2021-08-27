@@ -8,12 +8,6 @@ char *_getline()
 	int i, rd, buffsize = BUFSIZE;
 	char c = 0, *buffer, *buf;
 
-	buf = malloc(buffsize);
-	if (buf == NULL)
-	{
-		free(buf);
-		return (NULL);
-	}
 	buffer = malloc(buffsize);
 	if (buffer == NULL)
 	{
@@ -36,13 +30,17 @@ char *_getline()
 		{
 			buffer = _realloc(buffer, buffsize, buffsize + 1);
 			if (buffer == NULL)
-				return (NULL);
+				return (free(buffer), NULL);
 		}
 	}
 	buffer[i] = '\0';
 	buf = space(buffer);
+	free(buffer);
 	if (buf[0] == '\0')
+	{
+		free(buf);
 		return ("\0");
+	}
 	hashtag_handler(buf);
 	return (buf);
 }

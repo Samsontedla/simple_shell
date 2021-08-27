@@ -118,7 +118,7 @@ int dis_env(__attribute__((unused)) char **cmd,
 		__attribute__((unused)) int st);
 int echo_bul(char **cmd, int st);
 int history_dis(__attribute__((unused))char **c,
-		__attribute__((unused))int st);
+		__attribute__((unused)) int st);
 
 /****** BUILT-IN COMMANDS STRUCT *****/
 
@@ -129,7 +129,6 @@ int history_dis(__attribute__((unused))char **c,
  * @function: - Pointer to custom functions that have
  * similar functionalities as the built-in commands
  */
-
 typedef struct _builtin
 {
 	char *command;
