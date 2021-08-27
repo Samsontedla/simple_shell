@@ -74,8 +74,9 @@ int _atoi(char *s)
 	while (s[i] != '\0')
 	{
 		if (s[i] == '-')
-			j *= -1;
-
+		{
+			return (2);
+		}
 		k = s[i] - '0';
 
 		if (l > 0 && !(k >= 0 && k <= 9))

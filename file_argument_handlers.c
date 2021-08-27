@@ -16,7 +16,10 @@ void read_file(char *file, char **argv)
 
 	fp = fopen(file, "r");
 	if (fp == NULL)
-		exit(EXIT_FAILURE);
+	{
+		error_file(argv, count);
+		exit(127);
+	}
 	while ((getline(&line, &len, fp)) != -1)
 	{
 		count++;
@@ -45,7 +48,10 @@ void treat_file(char *line, int count, FILE *fp, char **argv)
 	if (_strncmp(cmd[0], "exit", 4) == 0)
 		exit_bul_for_file(cmd, line, fp);
 	else if (check_builtin(cmd) == 0)
+	{
 		stat = handle_builtin(cmd, stat);
+		free(cmd);
+	}
 	else
 	{
 		stat = check_cmd(cmd, line, count, argv);

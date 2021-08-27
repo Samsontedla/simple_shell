@@ -24,6 +24,14 @@ int path_cmd(char **cmd)
 		free(cmd_path);
 		value = _strtok(NULL, ":");
 	}
+/*
+ *	if (value == NULL)
+ *	{
+ *		free(path);
+ *		free(value);
+ *		exit(2);
+ *	}
+ */
 	free(path);
 	free(value);
 	return (1);

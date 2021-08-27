@@ -57,11 +57,13 @@ char *_itoa(unsigned int n)
 	char *s;
 
 	len = intlen(n);
-	s = malloc(len + 1);
+	s = malloc(len + 2);
 
 	if (!s)
+	{
+		free(s);
 		return (NULL);
-
+	}
 	*s = '\0';
 
 	while (n / 10)
