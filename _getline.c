@@ -28,7 +28,7 @@ char *_getline()
 			return (enter(buffer));
 		if (i >= buffsize)
 		{
-			buffer = _realloc(buffer, buffsize, buffsize + 1);
+			buffer = realloc(buffer, (buffsize + 2));
 			if (buffer == NULL)
 			{
 				free(buffer);
@@ -63,7 +63,7 @@ char *space(char *str)
 	int i, j = 0;
 	char *buff;
 
-	buff = malloc(sizeof(char) * BUFSIZE);
+	buff = malloc(sizeof(char) * (_strlen(str) + 1));
 	if (buff == NULL)
 	{
 		free(buff);
