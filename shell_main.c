@@ -29,6 +29,8 @@ int main(__attribute__((unused)) int argc, char **argv)
 			continue;
 		history(input);
 		cmd = parse_cmd(input);
+		//if (cmd[1][0] == '/')
+		//	exit(2);
 		if (_strcmp(cmd[0], "exit") == 0)
 		{
 			exit_bul(cmd, input, argv, count);

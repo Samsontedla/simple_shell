@@ -12,11 +12,12 @@ int check_builtin(char **cmd)
 		{"cd", NULL},
 		{"help", NULL},
 		{"echo", NULL},
+		{"env", NULL},
 		{"history", NULL},
 		{NULL, NULL}
 	};
 	int i = 0;
-		if (*cmd == NULL)
+	if (*cmd == NULL)
 	{
 		return (-1);
 	}
