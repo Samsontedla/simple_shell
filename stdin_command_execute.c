@@ -11,13 +11,20 @@
 
 int check_cmd(char **cmd, char *input, int c, char **argv)
 {
-	int status;
+	int status, ex;
 	pid_t pid;
 
-	if (*cmd == NULL)
+	if (_strncmp(*cmd, "./", 2) != 0 && _strncmp(*cmd, "/", 1) != 0)
+		path_cmd(cmd);
+	if (access(cmd[0], R_OK) != 0)
 	{
-		return (-1);
+		print_error(cmd[0], c, argv);
+		free(input);
+		free(cmd);
+		exit(127);
 	}
+	if (*cmd == NULL)
+		return (127);
 
 	pid = fork();
 	if (pid == -1)
@@ -28,21 +35,20 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 
 	if (pid == 0)
 	{
-		if (_strncmp(*cmd, "./", 2) != 0 && _strncmp(*cmd, "/", 1) != 0)
+		ex = execve(*cmd, cmd, environ);
+		if (ex == -1)
 		{
-			path_cmd(cmd);
-		}
-
-		if (execve(*cmd, cmd, environ) == -1)
-		{
-			print_error(cmd[0], c, argv);
-			free(input);
-			free(cmd);
-			exit(127);
+			return (-1);
 		}
 		return (EXIT_SUCCESS);
 	}
 	wait(&status);
+	if (WEXITSTATUS(status) != 0)
+	{
+		free(cmd);
+		free(input);
+		exit(2);
+	}
 	return (0);
 }
 
