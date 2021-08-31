@@ -15,7 +15,7 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 	pid_t pid;
 
 	if (*cmd == NULL)
-		return (0);
+		return (EXIT_FAILURE);
 	pid = fork();
 	if (pid == -1)
 	{
