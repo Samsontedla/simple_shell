@@ -77,7 +77,7 @@ char *space(char *str)
 		j++;
 	}
 	buff[j] = '\0';
-	if (buff[0] == '\0')
+	if (buff[0] == '\0' || buff[0] == '#')
 	{
 		free(buff);
 		return ("\0");
@@ -95,15 +95,9 @@ void hashtag_handler(char *buff)
 
 	for (i = 0; buff[i] != '\0'; i++)
 	{
-		if (buff[0] == '#')
-		{
-			buff[0] = '\0';
-			break;
-		}
 		if (buff[i] == '#' && buff[i - 1] == ' ' && buff[i + 1] == ' ')
 		{
 			buff[i] = '\0';
-			break;
 		}
 	}
 }
