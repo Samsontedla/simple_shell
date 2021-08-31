@@ -14,6 +14,8 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 	int wstatus;
 	pid_t pid;
 
+	if (*cmd == NULL)
+		return (0);
 	pid = fork();
 	if (pid == -1)
 	{
@@ -45,7 +47,6 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 		else if (WEXITSTATUS(wstatus) == 127)
 			return (127);
 	}
-	free(input);
 	return (127);
 }
 
