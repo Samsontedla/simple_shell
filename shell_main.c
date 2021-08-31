@@ -13,7 +13,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 	char **cmd;
 	int count = 0;
 	int condition = 1;
-	int stat;
+	int stat = 0;
 
 	if (argv[1] != NULL)
 		read_file(argv[1], argv);
