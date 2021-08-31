@@ -67,9 +67,10 @@ int handle_builtin(char **cmd, int st)
  * @input: Input recieved from user (to be freed)
  * @argv: Arguments before program starts(argv[0] == Shell Program Name)
  * @c: Shell execution count
+ * @stat: Exit status
  */
 
-void exit_bul(char **cmd, char *input, char **argv, int c)
+void exit_bul(char **cmd, char *input, char **argv, int c, int stat)
 {
 	int status, i = 0;
 
@@ -77,7 +78,7 @@ void exit_bul(char **cmd, char *input, char **argv, int c)
 	{
 		free(input);
 		free(cmd);
-		exit(EXIT_SUCCESS);
+		exit(stat);
 	}
 	while (cmd[1][i])
 	{
