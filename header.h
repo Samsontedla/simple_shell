@@ -3,7 +3,7 @@
 
 /***** MACROS *****/
 
-#define PRINT(c) (write(STDOUT_FILENO, c, _strlen(c)))
+#define PRINT(c) (write(STDERR_FILENO, c, _strlen(c)))
 #define BUFSIZE 10240
 #define DELIMITER " \t\r\n\a"
 

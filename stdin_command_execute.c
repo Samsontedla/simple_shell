@@ -11,20 +11,8 @@
 
 int check_cmd(char **cmd, char *input, int c, char **argv)
 {
-	int status, ex;
+	int wstatus;
 	pid_t pid;
-
-	if (_strncmp(*cmd, "./", 2) != 0 && _strncmp(*cmd, "/", 1) != 0)
-		path_cmd(cmd);
-	if (access(cmd[0], R_OK) != 0)
-	{
-		print_error(cmd[0], c, argv);
-		free(input);
-		free(cmd);
-		exit(127);
-	}
-	if (*cmd == NULL)
-		return (127);
 
 	pid = fork();
 	if (pid == -1)
@@ -32,23 +20,32 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 		perror("Error");
 		return (-1);
 	}
-
 	if (pid == 0)
 	{
-		ex = execve(*cmd, cmd, environ);
-		if (ex == -1)
+		if (_strncmp(*cmd, "./", 2) != 0 && _strncmp(*cmd, "/", 1) != 0)
+			path_cmd(cmd);
+		if (access(cmd[0], R_OK) != 0)
 		{
-			return (-1);
+			print_error(cmd[0], c, argv);
+			free_all(cmd, input);
+			exit(127);
 		}
-		return (EXIT_SUCCESS);
+		if (execve(*cmd, cmd, environ) == -1)
+			return (2);
+		else
+			return (0);
 	}
-	wait(&status);
-	if (WEXITSTATUS(status) != 0)
+	wait(&wstatus);
+	if (WIFEXITED(wstatus))
 	{
-		free(cmd);
-		free(input);
-		exit(2);
+		if (WEXITSTATUS(wstatus) == 0)
+			return (0);
+		else if (WEXITSTATUS(wstatus) == 2)
+			return (2);
+		else if (WEXITSTATUS(wstatus) == 127)
+			return (127);
 	}
+	free(input);
 	return (0);
 }
 

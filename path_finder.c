@@ -7,18 +7,20 @@
 int path_cmd(char **cmd)
 {
 	char *path, *value, *cmd_path;
-	struct stat buf;
+	struct stat *buf;
 
+	buf = malloc(sizeof(struct stat));
 	path = _getenv("PATH");
 	value = _strtok(path, ":");
 	while (value != NULL)
 	{
 		cmd_path = build(*cmd, value);
-		if (stat(cmd_path, &buf) == 0)
+		if (stat(cmd_path, buf) == 0)
 		{
 			*cmd = _strdup(cmd_path);
 			free(cmd_path);
 			free(path);
+			free(buf);
 			return (0);
 		}
 		free(cmd_path);
@@ -33,6 +35,7 @@ int path_cmd(char **cmd)
  *	}
  */
 	free(path);
+	free(buf);
 	free(value);
 	return (1);
 }

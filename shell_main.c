@@ -41,9 +41,9 @@ int main(__attribute__((unused)) int argc, char **argv)
 		}
 		else
 		{
-			check_cmd(cmd, input, count, argv);
+			stat = check_cmd(cmd, input, count, argv);
 		}
 		free_all(cmd, input);
 	}
-	return (condition);
+	return (stat);
 }
