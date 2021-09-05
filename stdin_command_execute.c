@@ -30,7 +30,7 @@ int check_cmd(char **cmd, char *input, int c, char **argv)
 		{
 			print_error(cmd[0], c, argv);
 			free_all(cmd, input);
-			_exit(127);
+			exit(127);
 		}
 		if (execve(*cmd, cmd, environ) == -1)
 			return (2);

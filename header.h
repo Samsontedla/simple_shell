@@ -58,6 +58,7 @@ void prompt(void);
 unsigned int check_delim(char c, const char *str);
 char *_strtok(char *str, const char *delim);
 int history(char *input);
+char **separator(char *input);
 
 /****** FILE ARGUMENT HANDLER FUNCTIONS ******/
 
